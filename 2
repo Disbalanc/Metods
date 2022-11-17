@@ -1,1 +1,43 @@
-
+do
+            {
+                Console.WriteLine("выберите действие:\n1 - генерация чисел;\n2 - ввод чисел;");
+                if (!int.TryParse(Console.ReadLine(), out int gen) || gen > 2 || gen < 1)
+                {
+                    Console.WriteLine("\nОшибка! не-то что-то ввели");
+                }
+                switch (gen)
+                {
+                    case 1:
+                        {
+                            Random rnd = new Random();
+                            int a = rnd.Next(-10,10);
+                            int b = rnd.Next(-10, 10);
+                            int result = Sum(a,b);
+                            Console.WriteLine($"\nПервое число: {a}\nВторое число: {b}\nРезультат: {result}");
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Write("Введите первое число: ");
+                            if (!int.TryParse(Console.ReadLine(), out int a))
+                            {
+                                Console.WriteLine("\nОшибка! не-то что-то ввели");
+                            }
+                            Console.Write("\nВведите второе число: ");
+                            if (!int.TryParse(Console.ReadLine(), out int b))
+                            {
+                                Console.WriteLine("\nОшибка! не-то что-то ввели");
+                            }
+                            int result = Sum(a, b);
+                            Console.WriteLine($"\nРезультат: {result}");
+                            break;
+                        }
+                }
+                Console.WriteLine("\nEnter - продолжить;\nESC - завершить;");
+                Console.ReadKey();
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
+        }
+        static int Sum(int a,int b)
+        {
+            return a + b;
+        }
